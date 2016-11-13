@@ -11,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import sample.utils.Constants;
 import sample.utils.MathUtils;
 import sample.views.GenericViews;
 
@@ -30,7 +31,7 @@ public class TwitchPlaysRubiksCube extends GameBase {
     
 
     public TwitchPlaysRubiksCube(Scene scene) {
-        super(scene, "rubiksCube");
+        super(scene, Constants.RUBIKS_CUBE);
     }
 
     @Override
@@ -250,127 +251,94 @@ public class TwitchPlaysRubiksCube extends GameBase {
         gridPane.add(new Rectangle(64, 64, Color.WHITE), 0, 0);
         gridPane.add(new Rectangle(64, 64, Color.WHITE), 10, 0);
 
-        gridPane.add(createRectangle(back[4]), 4, 0);
-        gridPane.add(createRectangle(back[5]), 5, 0);
-        gridPane.add(createRectangle(back[6]), 6, 0);
-        gridPane.add(createRectangle(back[3]), 4, 1);
-        gridPane.add(createRectangle(RED), 5, 1);
+        gridPane.add(GenericViews.createRectangle(back[4]), 4, 0);
+        gridPane.add(GenericViews.createRectangle(back[5]), 5, 0);
+        gridPane.add(GenericViews.createRectangle(back[6]), 6, 0);
+        gridPane.add(GenericViews.createRectangle(back[3]), 4, 1);
+        gridPane.add(GenericViews.createRectangle(RED), 5, 1);
         Text b = new Text("     B");
         b.setTextAlignment(TextAlignment.CENTER);
         b.setFont(new Font(20D));
         gridPane.add(b, 5, 1);
-        gridPane.add(createRectangle(back[7]), 6, 1);
-        gridPane.add(createRectangle(back[2]), 4, 2);
-        gridPane.add(createRectangle(back[1]), 5, 2);
-        gridPane.add(createRectangle(back[0]), 6, 2);
+        gridPane.add(GenericViews.createRectangle(back[7]), 6, 1);
+        gridPane.add(GenericViews.createRectangle(back[2]), 4, 2);
+        gridPane.add(GenericViews.createRectangle(back[1]), 5, 2);
+        gridPane.add(GenericViews.createRectangle(back[0]), 6, 2);
 
 
-        gridPane.add(createRectangle(left[6]), 1, 3);
-        gridPane.add(createRectangle(left[7]), 2, 3);
-        gridPane.add(createRectangle(left[0]), 3, 3);
-        gridPane.add(createRectangle(left[5]), 1, 4);
-        gridPane.add(createRectangle(BLUE), 2, 4);
+        gridPane.add(GenericViews.createRectangle(left[6]), 1, 3);
+        gridPane.add(GenericViews.createRectangle(left[7]), 2, 3);
+        gridPane.add(GenericViews.createRectangle(left[0]), 3, 3);
+        gridPane.add(GenericViews.createRectangle(left[5]), 1, 4);
+        gridPane.add(GenericViews.createRectangle(BLUE), 2, 4);
         Text l = new Text("     L");
         l.setTextAlignment(TextAlignment.CENTER);
         l.setFont(new Font(20D));
         gridPane.add(l, 2, 4);
-        gridPane.add(createRectangle(left[1]), 3, 4);
-        gridPane.add(createRectangle(left[4]), 1, 5);
-        gridPane.add(createRectangle(left[3]), 2, 5);
-        gridPane.add(createRectangle(left[2]), 3, 5);
+        gridPane.add(GenericViews.createRectangle(left[1]), 3, 4);
+        gridPane.add(GenericViews.createRectangle(left[4]), 1, 5);
+        gridPane.add(GenericViews.createRectangle(left[3]), 2, 5);
+        gridPane.add(GenericViews.createRectangle(left[2]), 3, 5);
 
-        gridPane.add(createRectangle(up[0]), 4, 3);
-        gridPane.add(createRectangle(up[1]), 5, 3);
-        gridPane.add(createRectangle(up[2]), 6, 3);
-        gridPane.add(createRectangle(up[7]), 4, 4);
-        gridPane.add(createRectangle(WHITE), 5, 4);
+        gridPane.add(GenericViews.createRectangle(up[0]), 4, 3);
+        gridPane.add(GenericViews.createRectangle(up[1]), 5, 3);
+        gridPane.add(GenericViews.createRectangle(up[2]), 6, 3);
+        gridPane.add(GenericViews.createRectangle(up[7]), 4, 4);
+        gridPane.add(GenericViews.createRectangle(WHITE), 5, 4);
         Text u = new Text("     U");
         u.setTextAlignment(TextAlignment.CENTER);
         u.setFont(new Font(20D));
         gridPane.add(u, 5, 4);
-        gridPane.add(createRectangle(up[3]), 6, 4);
-        gridPane.add(createRectangle(up[6]), 4, 5);
-        gridPane.add(createRectangle(up[5]), 5, 5);
-        gridPane.add(createRectangle(up[4]), 6, 5);
+        gridPane.add(GenericViews.createRectangle(up[3]), 6, 4);
+        gridPane.add(GenericViews.createRectangle(up[6]), 4, 5);
+        gridPane.add(GenericViews.createRectangle(up[5]), 5, 5);
+        gridPane.add(GenericViews.createRectangle(up[4]), 6, 5);
 
 
-        gridPane.add(createRectangle(right[2]), 7, 3);
-        gridPane.add(createRectangle(right[3]), 8, 3);
-        gridPane.add(createRectangle(right[4]), 9, 3);
-        gridPane.add(createRectangle(right[1]), 7, 4);
-        gridPane.add(createRectangle(GREEN), 8, 4);
+        gridPane.add(GenericViews.createRectangle(right[2]), 7, 3);
+        gridPane.add(GenericViews.createRectangle(right[3]), 8, 3);
+        gridPane.add(GenericViews.createRectangle(right[4]), 9, 3);
+        gridPane.add(GenericViews.createRectangle(right[1]), 7, 4);
+        gridPane.add(GenericViews.createRectangle(GREEN), 8, 4);
         Text r = new Text("     R");
         r.setTextAlignment(TextAlignment.CENTER);
         r.setFont(new Font(20D));
         gridPane.add(r, 8, 4);
-        gridPane.add(createRectangle(right[5]), 9, 4);
-        gridPane.add(createRectangle(right[0]), 7, 5);
-        gridPane.add(createRectangle(right[7]), 8, 5);
-        gridPane.add(createRectangle(right[6]), 9, 5);
+        gridPane.add(GenericViews.createRectangle(right[5]), 9, 4);
+        gridPane.add(GenericViews.createRectangle(right[0]), 7, 5);
+        gridPane.add(GenericViews.createRectangle(right[7]), 8, 5);
+        gridPane.add(GenericViews.createRectangle(right[6]), 9, 5);
 
 
-        gridPane.add(createRectangle(front[0]), 4, 6);
-        gridPane.add(createRectangle(front[1]), 5, 6);
-        gridPane.add(createRectangle(front[2]), 6, 6);
-        gridPane.add(createRectangle(front[7]), 4, 7);
-        gridPane.add(createRectangle(ORANGE), 5, 7);
+        gridPane.add(GenericViews.createRectangle(front[0]), 4, 6);
+        gridPane.add(GenericViews.createRectangle(front[1]), 5, 6);
+        gridPane.add(GenericViews.createRectangle(front[2]), 6, 6);
+        gridPane.add(GenericViews.createRectangle(front[7]), 4, 7);
+        gridPane.add(GenericViews.createRectangle(ORANGE), 5, 7);
         Text f = new Text("     F");
         f.setTextAlignment(TextAlignment.CENTER);
         f.setFont(new Font(20D));
         gridPane.add(f, 5, 7);
-        gridPane.add(createRectangle(front[3]), 6, 7);
-        gridPane.add(createRectangle(front[6]), 4, 8);
-        gridPane.add(createRectangle(front[5]), 5, 8);
-        gridPane.add(createRectangle(front[4]), 6, 8);
+        gridPane.add(GenericViews.createRectangle(front[3]), 6, 7);
+        gridPane.add(GenericViews.createRectangle(front[6]), 4, 8);
+        gridPane.add(GenericViews.createRectangle(front[5]), 5, 8);
+        gridPane.add(GenericViews.createRectangle(front[4]), 6, 8);
 
-        gridPane.add(createRectangle(down[0]), 4, 9);
-        gridPane.add(createRectangle(down[1]), 5, 9);
-        gridPane.add(createRectangle(down[2]), 6, 9);
-        gridPane.add(createRectangle(down[7]), 4, 10);
-        gridPane.add(createRectangle(YELLOW), 5, 10);
+        gridPane.add(GenericViews.createRectangle(down[0]), 4, 9);
+        gridPane.add(GenericViews.createRectangle(down[1]), 5, 9);
+        gridPane.add(GenericViews.createRectangle(down[2]), 6, 9);
+        gridPane.add(GenericViews.createRectangle(down[7]), 4, 10);
+        gridPane.add(GenericViews.createRectangle(YELLOW), 5, 10);
         Text d = new Text("     D");
         d.setTextAlignment(TextAlignment.CENTER);
         d.setFont(new Font(20D));
         gridPane.add(d, 5, 10);
-        gridPane.add(createRectangle(down[3]), 6, 10);
-        gridPane.add(createRectangle(down[6]), 4, 11);
-        gridPane.add(createRectangle(down[5]), 5, 11);
-        gridPane.add(createRectangle(down[4]), 6, 11);
+        gridPane.add(GenericViews.createRectangle(down[3]), 6, 10);
+        gridPane.add(GenericViews.createRectangle(down[6]), 4, 11);
+        gridPane.add(GenericViews.createRectangle(down[5]), 5, 11);
+        gridPane.add(GenericViews.createRectangle(down[4]), 6, 11);
 
         return gridPane;
-    }
-
-
-
-    public Rectangle createRectangle(int color) {
-        Color shapeColor = null;
-        switch (color) {
-            case YELLOW:
-                shapeColor = Color.YELLOW;
-                break;
-            case ORANGE:
-                shapeColor = Color.ORANGE;
-                break;
-            case GREEN:
-                shapeColor = Color.GREEN;
-                break;
-            case BLUE:
-                shapeColor = Color.BLUE;
-                break;
-            case RED:
-                shapeColor = Color.RED;
-                break;
-            case WHITE:
-                shapeColor = Color.WHITE;
-                break;
-            default:
-                shapeColor = Color.DARKGOLDENROD;
-                break;
-        }
-
-        Rectangle rectangle = new Rectangle(64, 64, shapeColor);
-        rectangle.setStroke(Color.BLACK);
-        return rectangle;
     }
 
     public void resetCube() {

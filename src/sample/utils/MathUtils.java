@@ -43,8 +43,4 @@ public class MathUtils {
         double d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
         return ((y3 - y4) * (x1 * y2 - y1 * x2) - (y1 - y2) * (x3 * y4 - y3 * x4)) / d;
     }
-
-
-
-
 }

@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.jibble.pircbot.IrcException;
 import sample.games.GameBase;
+import sample.games.TwitchPlaysChess;
 import sample.games.TwitchPlaysRubiksCube;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class Main extends Application {
             }
         });
 
-        currentGame = new TwitchPlaysRubiksCube(scene);
+        currentGame = new TwitchPlaysChess(scene);
         currentGame.start();
     }
 

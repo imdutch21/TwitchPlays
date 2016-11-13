@@ -54,30 +54,7 @@ public class GenericViews {
     }
 
     public static Group fillArea(Line left, Line top, Line right, Line bottom, int color, String letter) {
-        Color shapeColor = null;
-        switch (color) {
-            case YELLOW:
-                shapeColor = Color.YELLOW;
-                break;
-            case ORANGE:
-                shapeColor = Color.ORANGE;
-                break;
-            case GREEN:
-                shapeColor = Color.GREEN;
-                break;
-            case BLUE:
-                shapeColor = Color.BLUE;
-                break;
-            case RED:
-                shapeColor = Color.RED;
-                break;
-            case WHITE:
-                shapeColor = Color.WHITE;
-                break;
-            default:
-                shapeColor = Color.DARKGOLDENROD;
-                break;
-        }
+
         double xUL = MathUtils.intersectLinesX(top, left);
         double xUR = MathUtils.intersectLinesX(top, right);
         double xBL = MathUtils.intersectLinesX(bottom, left);
@@ -87,7 +64,7 @@ public class GenericViews {
         double yUR = MathUtils.intersectLinesY(top, right);
         double yBL = MathUtils.intersectLinesY(bottom, left);
         double yBR = MathUtils.intersectLinesY(bottom, right);
-        return fillArea(left, top, right, bottom, shapeColor, letter, xUL, xUR, xBL, xBR, yUL, yUR, yBL, yBR);
+        return fillArea(left, top, right, bottom, getColorFromInt(color), letter, xUL, xUR, xBL, xBR, yUL, yUR, yBL, yBR);
     }
 
 
@@ -166,4 +143,44 @@ public class GenericViews {
         return pane;
     }
 
+    public static Rectangle createRectangle(int color) {
+        return createRectangle(getColorFromInt(color), true, 64, 64);
+    }
+
+    public static Color getColorFromInt(int color){
+        Color c;
+        switch (color) {
+            case YELLOW:
+                c = Color.YELLOW;
+                break;
+            case ORANGE:
+                c = Color.ORANGE;
+                break;
+            case GREEN:
+                c = Color.GREEN;
+                break;
+            case BLUE:
+                c = Color.BLUE;
+                break;
+            case RED:
+                c = Color.RED;
+                break;
+            case WHITE:
+                c = Color.WHITE;
+                break;
+            default:
+                c = Color.DARKGOLDENROD;
+                break;
+        }
+        return c;
+    }
+
+
+    public static Rectangle createRectangle(Color color, boolean border, double width, double height) {
+
+        Rectangle rectangle = new Rectangle(width, height, color);
+        if (border)
+        rectangle.setStroke(Color.BLACK);
+        return rectangle;
+    }
 }
