@@ -12,7 +12,6 @@ public class GameBase {
 
     /** Constructor for games
      *
-     * @param scene
      * @param name
      */
     public GameBase(Scene scene, String name){
@@ -36,9 +35,7 @@ public class GameBase {
 
     }
 
-    public void drawScreen() {
 
-    }
 
     public boolean handleKeyInput(KeyCode keyCode, boolean reverse) {
         return false;

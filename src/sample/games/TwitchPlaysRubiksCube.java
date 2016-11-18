@@ -17,6 +17,7 @@ import sample.views.GenericViews;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import static sample.utils.Constants.*;
 
 public class TwitchPlaysRubiksCube extends GameBase {
@@ -28,7 +29,7 @@ public class TwitchPlaysRubiksCube extends GameBase {
     public int[] right = new int[8];
     public int[] front = new int[8];
     public int[] back = new int[8];
-    
+
 
     public TwitchPlaysRubiksCube(Scene scene) {
         super(scene, Constants.RUBIKS_CUBE);
@@ -136,7 +137,6 @@ public class TwitchPlaysRubiksCube extends GameBase {
     }
 
 
-
     public Pane drawCube3d(int x, int y, double size, boolean topView) {
         Line l1 = GenericViews.makeLine(x, y, 90D, size);
         Line l2 = GenericViews.makeLine(x, y, -30D, size);
@@ -241,8 +241,6 @@ public class TwitchPlaysRubiksCube extends GameBase {
 
         return pane;
     }
-
-    
 
 
     public Pane drawCube() {
