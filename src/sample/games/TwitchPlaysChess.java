@@ -71,19 +71,31 @@ public class TwitchPlaysChess extends GameBase {
     private void populateBoard() {
         for (int x = 0; x < 8; x++)
             for (int y = 0; y < 8; y++) {
-                if ((x == 0 || x == 7) && (y == 0 | y == 7))
-                    board[x][y] = EnumChessPiece.ROOK;
-                else if ((x == 1 || x == 6) && (y == 0 | y == 7))
-                    board[x][y] = EnumChessPiece.KNIGHT;
-                else if ((x == 2 || x == 5) && (y == 0 | y == 7))
-                    board[x][y] = EnumChessPiece.BISHOP;
-                else if ((x == 3) && (y == 0 | y == 7))
-                    board[x][y] = EnumChessPiece.QUEEN;
-                else if ((x == 4) && (y == 0 | y == 7))
-                    board[x][y] = EnumChessPiece.KING;
-                else if (y == 1 || y == 6)
-                    board[x][y] = EnumChessPiece.PAWN;
-                else
+                if ((x == 0 || x == 7) && (y == 0 | y == 7)) {
+                    EnumChessPiece piece = EnumChessPiece.ROOK;
+                    piece.isBlack = y == 0;
+                    board[x][y] = piece;
+                } else if ((x == 1 || x == 6) && (y == 0 | y == 7)) {
+                    EnumChessPiece piece = EnumChessPiece.KNIGHT;
+                    piece.isBlack = y == 0;
+                    board[x][y] = piece;
+                } else if ((x == 2 || x == 5) && (y == 0 | y == 7)) {
+                    EnumChessPiece piece = EnumChessPiece.BISHOP;
+                    piece.isBlack = y == 0;
+                    board[x][y] = piece;
+                } else if ((x == 3) && (y == 0 | y == 7)) {
+                    EnumChessPiece piece = EnumChessPiece.QUEEN;
+                    piece.isBlack = y == 0;
+                    board[x][y] = piece;
+                } else if ((x == 4) && (y == 0 | y == 7)) {
+                    EnumChessPiece piece = EnumChessPiece.KING;
+                    piece.isBlack = y == 0;
+                    board[x][y] = piece;
+                } else if (y == 1 || y == 6) {
+                    EnumChessPiece piece = EnumChessPiece.PAWN;
+                    piece.isBlack = y == 1;
+                    board[x][y] = piece;
+                } else
                     board[x][y] = null;
             }
     }
