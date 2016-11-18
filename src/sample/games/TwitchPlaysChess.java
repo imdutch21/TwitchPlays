@@ -87,4 +87,48 @@ public class TwitchPlaysChess extends GameBase {
                     board[x][y] = null;
             }
     }
+
+
+    public boolean canMove(int startX, int startY, int endX, int endY) {
+        if (startX < 8 && startY < 8 && endX < 8 && endY < 8) {
+            EnumChessPiece piece = board[startX][startY];
+            if (piece != null) {
+                int dY = endY - startX;
+                int dX = endX - startX;
+                switch (piece) {
+                    case PAWN: {
+                        if (dX == 0 && (dY == 1 || (dY == 2 && piece.firstMove)) && board[startX][startY + 1] == null) {
+                            if (dY == 1)
+                                return true;
+                            else if (board[startX][startY + 2] == null)
+                                return true;
+                        } else if ((dX == -1 || dX == 1) && dY == 1 && board[endX][endY] != null && board[endX][endY].isBlack == piece.isBlack) {
+                            return true;
+                        }
+                        break;
+                    }
+                    case ROOK: {
+                        if (dY != 0 && dX == 0) {
+                            boolean blocked = false;
+                            for (int i = 0; i < dY; i++) {
+                                if (board[startX][startY + i] != null) {
+                                    blocked = true;
+                                }
+                            }
+                            return blocked;
+                        } else if (dY == 0 && dX != 0) {
+                            boolean blocked = false;
+                            for (int i = 0; i < dX; i++) {
+                                if (board[startX + i][startY] != null) {
+                                    blocked = true;
+                                }
+                            }
+                            return blocked;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -10,4 +10,7 @@ public enum EnumChessPiece {
     ROOK,
     KNIGHT,
     PAWN;
+
+    public boolean firstMove = false;
+    public boolean isBlack = false;
 }
