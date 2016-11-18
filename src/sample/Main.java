@@ -7,11 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.jibble.pircbot.IrcException;
+import sample.games.Chess.TwitchPlaysChess;
 import sample.games.GameBase;
-import sample.games.TwitchPlaysChess;
-import sample.games.TwitchPlaysRubiksCube;
-
 import java.io.IOException;
+
 
 public class Main extends Application {
     public static GameBase currentGame = null;

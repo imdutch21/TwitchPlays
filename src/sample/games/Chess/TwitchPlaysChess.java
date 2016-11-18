@@ -1,4 +1,4 @@
-package sample.games;
+package sample.games.Chess;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -8,14 +8,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import sample.games.EnumChessPiece;
+import sample.games.GameBase;
 import sample.utils.Constants;
 import sample.views.GenericViews;
+
 
 /**
  * Created by bart on 12/11/2016.
  */
 public class TwitchPlaysChess extends GameBase {
-    private EnumChessPiece[][] board = new EnumChessPiece[8][8];
+    private sample.games.EnumChessPiece[][] board = new sample.games.EnumChessPiece[8][8];
 
 
     public TwitchPlaysChess(Scene scene) {

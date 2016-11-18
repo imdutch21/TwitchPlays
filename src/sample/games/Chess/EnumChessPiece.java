@@ -1,4 +1,4 @@
-package sample.games;
+package sample.games.Chess;
 
 /**
  * Created by bart on 13/11/2016.
