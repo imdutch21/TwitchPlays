@@ -20,10 +20,6 @@ import static sample.utils.Constants.*;
  * Created by bart on 12/11/2016.
  */
 public class GenericViews {
-    public static Pane createChatView() {
-        return new Pane();
-    }
-
 
     public static Line makeLine(Line l1, Line l2, double angle1, double angle2, double length) {
         return makeLine(l1, l2, angle1, angle2, length, length);
@@ -123,6 +119,7 @@ public class GenericViews {
 
     /**
      * creates a chat window with messages from twitch
+     *
      * @param messages
      * @return
      */
@@ -147,7 +144,7 @@ public class GenericViews {
         return createRectangle(getColorFromInt(color), true, 64, 64);
     }
 
-    public static Color getColorFromInt(int color){
+    public static Color getColorFromInt(int color) {
         Color c;
         switch (color) {
             case YELLOW:
@@ -180,7 +177,7 @@ public class GenericViews {
 
         Rectangle rectangle = new Rectangle(width, height, color);
         if (border)
-        rectangle.setStroke(Color.BLACK);
+            rectangle.setStroke(Color.BLACK);
         return rectangle;
     }
 }
