@@ -10,21 +10,23 @@ public class GameBase {
     public String name;
     public Scene scene;
 
-    /** Constructor for games
+    /**
+     * Constructor for games
      *
      * @param name
      */
-    public GameBase(Scene scene, String name){
+    public GameBase(Scene scene, String name) {
         this.name = name;
         this.scene = scene;
     }
 
-    public void start(){
+    public void start() {
 
     }
 
     /**
      * Get's called when a message is send in titch chat
+     *
      * @param channel
      * @param sender
      * @param login
@@ -36,8 +38,12 @@ public class GameBase {
     }
 
 
-
     public boolean handleKeyInput(KeyCode keyCode, boolean reverse) {
         return false;
+    }
+
+
+    public void drawScreen() {
+
     }
 }

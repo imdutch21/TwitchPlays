@@ -52,6 +52,8 @@ public class TwitchPlaysChess extends GameBase {
                 } else
                     board[x][y] = null;
             }
+
+        ui.validMoves.addAll(board[1][0].getValidMoves(board));
     }
 
     public ArrayList<ChessPieceBase> getMovablePieces(boolean isBlack) {
@@ -70,5 +72,12 @@ public class TwitchPlaysChess extends GameBase {
         board[xEnd][yEnd] = board[xStart][yStart];
         board[xStart][yStart] = null;
         board[xEnd][yEnd].moveTo(xEnd, yEnd);
+        drawScreen();
+    }
+
+
+    @Override
+    public void drawScreen() {
+        ui.drawScreen();
     }
 }

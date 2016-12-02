@@ -24,7 +24,7 @@ public class ChessPieceBase {
         this.y = y;
     }
 
-    public ArrayList<Point> getValidMoves() {
+    public ArrayList<Point> getValidMoves(ChessPieceBase[][] board) {
         return null;
     }
 
@@ -39,5 +39,10 @@ public class ChessPieceBase {
 
     public int getX() {
         return x;
+    }
+
+    public boolean isValidPoint(int x, int y, ChessPieceBase[][] board) {
+
+        return x < 8 && y < 8 && x > -1 && y > -1 && (board[x][y] == null || board[x][y].isBlack() != isBlack());
     }
 }
