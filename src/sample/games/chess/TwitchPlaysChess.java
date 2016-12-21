@@ -52,8 +52,8 @@ public class TwitchPlaysChess extends GameBase {
                 } else
                     board[x][y] = null;
             }
-
-        ui.validMoves.addAll(board[1][0].getValidMoves(board));
+        board[3][3] = new ChessPieceBishop(3, 3, true);
+        ui.validMoves.addAll(board[3][3].getValidMoves(board));
     }
 
     public ArrayList<ChessPieceBase> getMovablePieces(boolean isBlack) {

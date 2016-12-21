@@ -41,8 +41,13 @@ public class ChessPieceBase {
         return x;
     }
 
-    public boolean isValidPoint(int x, int y, ChessPieceBase[][] board) {
-
-        return x < 8 && y < 8 && x > -1 && y > -1 && (board[x][y] == null || board[x][y].isBlack() != isBlack());
+    public int isValidPoint(int x, int y, ChessPieceBase[][] board) {
+        if (x < 8 && y < 8 && x > -1 && y > -1 && (board[x][y] == null || board[x][y].isBlack() != isBlack()))
+            if (board[x][y] != null && board[x][y].isBlack() != isBlack())
+                return 2;
+            else
+                return 1;
+        else
+            return 0;
     }
 }
