@@ -41,6 +41,15 @@ public class ChessPieceBase {
         return x;
     }
 
+    /**
+     * Returns whether the current selected spot is a place that a piece can stand
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param board the current board
+     * @return 0 if it's not a valid spot,
+     *         1 if it's a valid empty spot,
+     *         2 if it's a valid spot that's occupied by an enemy piece
+     */
     public int isValidPoint(int x, int y, ChessPieceBase[][] board) {
         if (x < 8 && y < 8 && x > -1 && y > -1 && (board[x][y] == null || board[x][y].isBlack() != isBlack()))
             if (board[x][y] != null && board[x][y].isBlack() != isBlack())

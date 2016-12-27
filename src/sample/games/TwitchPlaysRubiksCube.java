@@ -75,7 +75,7 @@ public class TwitchPlaysRubiksCube extends GameBase {
         scene.setRoot(pane);
     }
 
-    @Override
+
     public boolean handleKeyInput(KeyCode keyCode, boolean reverse) {
         switch (keyCode) {
             case U:

@@ -9,6 +9,7 @@ import org.jibble.pircbot.IrcException;
 import sample.games.TwitchPlaysRubiksCube;
 import sample.games.chess.TwitchPlaysChess;
 import sample.games.GameBase;
+
 import java.io.IOException;
 
 
@@ -16,7 +17,7 @@ public class Main extends Application {
     public static GameBase currentGame = null;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = new Pane();
         primaryStage.setTitle("Hello World");
         Scene scene = new Scene(root, 1000, 1000);
@@ -25,8 +26,8 @@ public class Main extends Application {
 
         //Key handeling
         scene.setOnKeyPressed(e -> {
-            if (currentGame != null) {
-                currentGame.handleKeyInput(e.getCode(), false);
+            if (currentGame instanceof TwitchPlaysRubiksCube) {
+                ((TwitchPlaysRubiksCube) currentGame).handleKeyInput(e.getCode(), false);
                 currentGame.drawScreen();
             }
         });

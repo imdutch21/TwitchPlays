@@ -15,57 +15,46 @@ public class ChessPieceBishop extends ChessPieceBase {
     @Override
     public ArrayList<Point> getValidMoves(ChessPieceBase[][] board) {
         ArrayList<Point> points = new ArrayList<>();
-        int j = Math.min(7 - getX(), 7 - getY());
-        int inTheWay = 0;
-        for (int i = 1; i <= j; i++) {
-            System.out.println(getX() + i + ", " + (getY() + i) + ", " + j);
+        int inTheWay1 = 0;
+        int inTheWay2 = 0;
+        int inTheWay3 = 0;
+        int inTheWay4 = 0;
+        for (int i = 1; i <= 8; i++) {
             int k = isValidPoint(getX() + i, getY() + i, board);
-            if (k == 1)
-                points.add(new Point(getX() + i, getY() + i));
-            else if (k == 2 && inTheWay == 0) {
-                inTheWay++;
-                points.add(new Point(getX() + i, getY() + i));
-            } else
-                break;
-        }
+            if (inTheWay1 == 0)
+                if (k == 1)
+                    points.add(new Point(getX() + i, getY() + i));
+                else if (k == 2) {
+                    inTheWay1++;
+                    points.add(new Point(getX() + i, getY() + i));
+                }
 
-        inTheWay = 0;
-        j = Math.min(7 - getX(), getY());
-        for (int i = 1; i <= j; i++) {
-            int k = isValidPoint(getX() + i, getY() - +i, board);
-            if (k == 1)
-                points.add(new Point(getX() + i, getY() - i));
-            else if (k == 2 && inTheWay == 0) {
-                inTheWay++;
-                points.add(new Point(getX() + i, getY() - i));
-            } else
-                break;
-        }
+            k = isValidPoint(getX() - i, getY() + i, board);
+            if (inTheWay2 == 0)
+                if (k == 1)
+                    points.add(new Point(getX() - i, getY() + i));
+                else if (k == 2) {
+                    inTheWay2++;
+                    points.add(new Point(getX() - i, getY() + i));
+                }
 
-        inTheWay = 0;
-        j = Math.min(getX(), 7 - getY());
-        for (int i = 1; i <= j; i++) {
-            int k = isValidPoint(getX() - i, getY() + i, board);
-            if (k == 1)
-                points.add(new Point(getX() - i, getY() + i));
-            else if (k == 2 && inTheWay == 0) {
-                inTheWay++;
-                points.add(new Point(getX() - i, getY() + i));
-            } else
-                break;
-        }
+            k = isValidPoint(getX() - i, getY() - i, board);
+            if (inTheWay3 == 0)
+                if (k == 1)
+                    points.add(new Point(getX() - i, getY() - i));
+                else if (k == 2) {
+                    inTheWay3++;
+                    points.add(new Point(getX() - i, getY() - i));
+                }
 
-        inTheWay = 0;
-        j = Math.min(getX(), getY());
-        for (int i = 1; i <= j; i++) {
-            int k = isValidPoint(getX() - i, getY() - i, board);
-            if (k == 1)
-                points.add(new Point(getX() - i, getY() - i));
-            else if (k == 2 && inTheWay == 0) {
-                inTheWay++;
-                points.add(new Point(getX() - i, getY() - i));
-            } else
-                break;
+            k = isValidPoint(getX() + i, getY() - i, board);
+            if (inTheWay4 == 0)
+                if (k == 1)
+                    points.add(new Point(getX() + i, getY() - i));
+                else if (k == 2) {
+                    inTheWay4++;
+                    points.add(new Point(getX() + i, getY() - i));
+                }
         }
         return points;
     }

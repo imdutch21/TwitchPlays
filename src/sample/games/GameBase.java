@@ -12,7 +12,7 @@ public class GameBase {
 
     /**
      * Constructor for games
-     *
+     * @param scene
      * @param name
      */
     public GameBase(Scene scene, String name) {
@@ -27,18 +27,22 @@ public class GameBase {
     /**
      * Get's called when a message is send in titch chat
      *
-     * @param channel
-     * @param sender
-     * @param login
-     * @param hostname
-     * @param message
+     * @param channel the channel the message is send in
+     * @param sender the nickname of the person that send the message
+     * @param login the login name of the person that send the message
+     * @param hostname the hostname of the person that send the message
+     * @param message the message that was send
      */
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
 
     }
 
-
-    public boolean handleKeyInput(KeyCode keyCode, boolean reverse) {
+    /**
+     * handles a specified key (not used atm)
+     * @param keyCode the keycode of the put in key
+     * @return whether the key was used for something
+     */
+    public boolean handleKeyInput(KeyCode keyCode) {
         return false;
     }
 

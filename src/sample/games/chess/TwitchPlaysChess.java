@@ -52,10 +52,15 @@ public class TwitchPlaysChess extends GameBase {
                 } else
                     board[x][y] = null;
             }
-        board[3][3] = new ChessPieceBishop(3, 3, true);
-        ui.validMoves.addAll(board[3][3].getValidMoves(board));
+        board[3][5] = new ChessPiecePawn(3, 5, true);
+        ui.validMoves.addAll(board[3][5].getValidMoves(board));
     }
 
+    /**
+     * Returns all the pieces of a specified colour
+     * @param isBlack whether the piece is black or not
+     * @return all the pieces that are of the specified colour
+     */
     public ArrayList<ChessPieceBase> getMovablePieces(boolean isBlack) {
         ArrayList<ChessPieceBase> pieces = new ArrayList<>();
         for (int x = 0; x < 8; x++)
@@ -67,7 +72,13 @@ public class TwitchPlaysChess extends GameBase {
         return pieces;
     }
 
-
+    /**
+     * Moves a piece from one place to another
+     * @param xStart the x coordinate of the current piece
+     * @param yStart the y coordinate of the current piece
+     * @param xEnd the x coordinate of the destination
+     * @param yEnd the y coordinate of the destination
+     */
     public void movePiece(int xStart, int yStart, int xEnd, int yEnd) {
         board[xEnd][yEnd] = board[xStart][yStart];
         board[xStart][yStart] = null;
