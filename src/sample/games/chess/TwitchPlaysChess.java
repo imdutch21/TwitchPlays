@@ -5,6 +5,7 @@ import sample.games.GameBase;
 import sample.games.chess.pieces.*;
 import sample.utils.Constants;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class TwitchPlaysChess extends GameBase {
     public ChessPieceBase[][] board = new ChessPieceBase[8][8];
     private TwitchPlaysChessUI ui;
+    private Point locationBlackKing, locationWhiteKing;
 
 
     public TwitchPlaysChess(Scene scene) {
@@ -46,43 +48,60 @@ public class TwitchPlaysChess extends GameBase {
                 } else if ((x == 3) && (y == 0 | y == 7)) {
                     board[x][y] = new ChessPieceQueen(x, y, y == 0);
                 } else if ((x == 4) && (y == 0 | y == 7)) {
+                    if (y == 0) {
+                        locationBlackKing = new Point(x, y);
+                    } else {
+                        locationWhiteKing = new Point(x, y);
+                    }
                     board[x][y] = new ChessPieceKing(x, y, y == 0);
                 } else if (y == 1 || y == 6) {
                     board[x][y] = new ChessPiecePawn(x, y, y == 1);
                 } else
                     board[x][y] = null;
             }
-        board[3][5] = new ChessPiecePawn(3, 5, true);
-        ui.validMoves.addAll(board[3][5].getValidMoves(board));
+        for (ChessPieceBase piece : getMovablePieces(board, true)) {
+            ui.validMoves.addAll(piece.getValidMoves(board, true));
+        }
     }
 
     /**
      * Returns all the pieces of a specified colour
+     *
      * @param isBlack whether the piece is black or not
      * @return all the pieces that are of the specified colour
      */
-    public ArrayList<ChessPieceBase> getMovablePieces(boolean isBlack) {
+    public ArrayList<ChessPieceBase> getMovablePieces(ChessPieceBase[][] board, boolean isBlack) {
         ArrayList<ChessPieceBase> pieces = new ArrayList<>();
         for (int x = 0; x < 8; x++)
             for (int y = 0; y < 8; y++) {
                 ChessPieceBase pieceBase = board[x][y];
-                if (pieceBase.isBlack() == isBlack)
-                    pieces.add(pieceBase);
+                if (pieceBase != null)
+                    if (pieceBase.isBlack() == isBlack)
+                        pieces.add(pieceBase);
             }
         return pieces;
     }
 
     /**
      * Moves a piece from one place to another
+     *
      * @param xStart the x coordinate of the current piece
      * @param yStart the y coordinate of the current piece
-     * @param xEnd the x coordinate of the destination
-     * @param yEnd the y coordinate of the destination
+     * @param xEnd   the x coordinate of the destination
+     * @param yEnd   the y coordinate of the destination
      */
     public void movePiece(int xStart, int yStart, int xEnd, int yEnd) {
         board[xEnd][yEnd] = board[xStart][yStart];
         board[xStart][yStart] = null;
         board[xEnd][yEnd].moveTo(xEnd, yEnd);
+        if (board[xEnd][yEnd] instanceof ChessPieceKing) {
+            if (board[xEnd][yEnd].isBlack()) {
+                locationBlackKing = new Point(xEnd, yEnd);
+            } else {
+                locationWhiteKing = new Point(xEnd, yEnd);
+            }
+        }
+
         drawScreen();
     }
 
@@ -90,5 +109,13 @@ public class TwitchPlaysChess extends GameBase {
     @Override
     public void drawScreen() {
         ui.drawScreen();
+    }
+
+    public Point getLocationBlackKing() {
+        return locationBlackKing;
+    }
+
+    public Point getLocationWhiteKing() {
+        return locationWhiteKing;
     }
 }

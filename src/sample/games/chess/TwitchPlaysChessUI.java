@@ -51,6 +51,7 @@ public class TwitchPlaysChessUI {
                     grid.add(GenericViews.createRectangle(Color.WHITE, false, 64, 64), x, y);
                 black = !black;
                 if (domein.board[x][y] != null) {
+                    System.out.println(domein.board[x][y].toString());
                     Rectangle piece = GenericViews.createRectangle(GenericViews.getColorFromInt(domein.board[x][y].isBlack()?1:2), false, 16, 16);
                     GridPane.setHalignment(piece, HPos.CENTER);
                     grid.add(piece, x, y);

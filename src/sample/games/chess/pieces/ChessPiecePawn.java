@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class ChessPiecePawn extends ChessPieceBase {
     private boolean hasBeenMoved = false;
+
     public ChessPiecePawn(int x, int y, boolean isBlack) {
         super(x, y, isBlack);
     }
@@ -19,28 +20,39 @@ public class ChessPiecePawn extends ChessPieceBase {
         hasBeenMoved = true;
     }
 
+    /*
+      *
+     ***
+      #
+     */
     @Override
-    public ArrayList<Point> getValidMoves(ChessPieceBase[][] board) {
+    public ArrayList<Point> getValidMoves(ChessPieceBase[][] board, boolean mateCheck) {
         ArrayList<Point> points = new ArrayList<>();
         if (isBlack()) {
-            if (isValidPoint(getX(), getY() + 1, board) == 1)
+            if (isValidPoint(getX(), getY() + 1, board, mateCheck) == 1)
                 points.add(new Point(getX(), getY() + 1));
-            if (isValidPoint(getX(), getY() + 2, board) == 1 && !hasBeenMoved)
+            if (isValidPoint(getX(), getY() + 2, board, mateCheck) == 1 && !hasBeenMoved)
                 points.add(new Point(getX(), getY() + 2));
-            if (isValidPoint(getX() + 1, getY() + 1, board) == 2)
+            if (isValidPoint(getX() + 1, getY() + 1, board, mateCheck) == 2)
                 points.add(new Point(getX() + 1, getY() + 1));
-            if (isValidPoint(getX() - 1, getY() + 1, board) == 2)
+            if (isValidPoint(getX() - 1, getY() + 1, board, mateCheck) == 2)
                 points.add(new Point(getX() - 1, getY() + 1));
         } else {
-            if (isValidPoint(getX(), getY() - 1, board) == 1)
+            if (isValidPoint(getX(), getY() - 1, board, mateCheck) == 1)
                 points.add(new Point(getX(), getY() - 1));
-            if (isValidPoint(getX(), getY() - 2, board) == 1 && !hasBeenMoved)
+            if (isValidPoint(getX(), getY() - 2, board, mateCheck) == 1 && !hasBeenMoved)
                 points.add(new Point(getX(), getY() - 2));
-            if (isValidPoint(getX() + 1, getY() - 1, board) == 2)
+            if (isValidPoint(getX() + 1, getY() - 1, board, mateCheck) == 2)
                 points.add(new Point(getX() + 1, getY() - 1));
-            if (isValidPoint(getX() - 1, getY() - 1, board) == 2)
+            if (isValidPoint(getX() - 1, getY() - 1, board, mateCheck) == 2)
                 points.add(new Point(getX() - 1, getY() - 1));
         }
         return points;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Pawn: " + getX() + ", " + getY();
     }
 }
