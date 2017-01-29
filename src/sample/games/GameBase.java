@@ -2,6 +2,7 @@ package sample.games;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,15 @@ public class GameBase {
         return false;
     }
 
+    /**
+     * Handles a mouse input
+     * @param button the button that is pressed
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
+    public void handleMouseClick(MouseButton button, double x, double y){
+
+    }
 
     public void drawScreen() {
 

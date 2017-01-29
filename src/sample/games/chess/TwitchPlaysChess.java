@@ -1,6 +1,7 @@
 package sample.games.chess;
 
 import javafx.scene.Scene;
+import javafx.scene.input.MouseButton;
 import sample.games.GameBase;
 import sample.games.chess.pieces.*;
 import sample.utils.Constants;
@@ -16,6 +17,7 @@ public class TwitchPlaysChess extends GameBase {
     public ChessPieceBase[][] board = new ChessPieceBase[8][8];
     private TwitchPlaysChessUI ui;
     private Point locationBlackKing, locationWhiteKing;
+    private boolean blackTurn = true;
 
 
     public TwitchPlaysChess(Scene scene) {
@@ -59,9 +61,7 @@ public class TwitchPlaysChess extends GameBase {
                 } else
                     board[x][y] = null;
             }
-        for (ChessPieceBase piece : getMovablePieces(board, true)) {
-            ui.validMoves.addAll(piece.getValidMoves(board, true));
-        }
+        ui.displayMovablePieces();
     }
 
     /**
@@ -118,4 +118,39 @@ public class TwitchPlaysChess extends GameBase {
     public Point getLocationWhiteKing() {
         return locationWhiteKing;
     }
+
+    public boolean isBlackTurn() {
+        return blackTurn;
+    }
+
+    @Override
+    public void handleMouseClick(MouseButton button, double x, double y) {
+        if (x > 8 && y > 8 && x <= 520 && y <= 520) {
+            int gridX = (int) ((x - 8) / 64);
+            int gridY = (int) ((y - 8) / 64);
+            if (ui.validMoves != null) {
+                if (ui.selected == null) {
+                    for (Point p : ui.validMoves)
+                        if (p.getX() == gridX && p.getY() == gridY) {
+                            ui.selected = new Point(gridX, gridY);
+                            ui.displayValidMoves();
+                            ui.drawScreen();
+                            break;
+                        }
+                } else {
+                    for (Point p : ui.validMoves)
+                        if (p.getX() == gridX && p.getY() == gridY) {
+                            movePiece(ui.selected.x, ui.selected.y, gridX, gridY);
+                            blackTurn = !blackTurn;
+                            ui.selected = null;
+                            ui.displayMovablePieces();
+                            ui.drawScreen();
+                            break;
+                        }
+                }
+            }
+        }
+    }
+
+
 }

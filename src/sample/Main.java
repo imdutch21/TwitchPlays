@@ -6,9 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.jibble.pircbot.IrcException;
+import sample.games.GameBase;
 import sample.games.TwitchPlaysRubiksCube;
 import sample.games.chess.TwitchPlaysChess;
-import sample.games.GameBase;
 
 import java.io.IOException;
 
@@ -30,6 +30,10 @@ public class Main extends Application {
                 ((TwitchPlaysRubiksCube) currentGame).handleKeyInput(e.getCode(), false);
                 currentGame.drawScreen();
             }
+        });
+        scene.setOnMouseClicked( e->{
+            if (currentGame != null)
+                currentGame.handleMouseClick(e.getButton(), e.getX(), e.getY());
         });
 
         currentGame = new TwitchPlaysChess(scene);
