@@ -138,19 +138,25 @@ public class TwitchPlaysChess extends GameBase {
                             break;
                         }
                 } else {
-                    for (Point p : ui.validMoves)
+                    boolean validClick = false;
+                    for (Point p : ui.validMoves) {
                         if (p.getX() == gridX && p.getY() == gridY) {
                             movePiece(ui.selected.x, ui.selected.y, gridX, gridY);
                             blackTurn = !blackTurn;
                             ui.selected = null;
                             ui.displayMovablePieces();
                             ui.drawScreen();
+                            validClick = true;
                             break;
                         }
+                    }
+                    if (!validClick){
+                        ui.selected = null;
+                        ui.displayMovablePieces();
+                        ui.drawScreen();
+                    }
                 }
             }
         }
     }
-
-
 }

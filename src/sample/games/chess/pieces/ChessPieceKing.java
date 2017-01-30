@@ -1,5 +1,8 @@
 package sample.games.chess.pieces;
 
+import sample.Main;
+import sample.games.chess.TwitchPlaysChess;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -43,5 +46,36 @@ public class ChessPieceKing extends ChessPieceBase {
     @Override
     public String toString() {
         return "King: " + getX() + ", " + getY();
+    }
+
+    @Override
+    public int isValidPoint(int x, int y, ChessPieceBase[][] board, boolean mateCheck) {
+        if (x < 8 && y < 8 && x > -1 && y > -1 && (board[x][y] == null || board[x][y].isBlack() != isBlack())) {
+            //checks if the king can be hit with this move
+            if (mateCheck && Main.currentGame instanceof TwitchPlaysChess) {
+                ChessPieceBase[][] tempBoard = new ChessPieceBase[8][8];
+                for (int x2 = 0; x2 < 8; x2++)
+                    for (int y2 = 0; y2 < 8; y2++)
+                        tempBoard[x2][y2] = board[x2][y2];
+                tempBoard[getX()][getY()] = null;
+                tempBoard[x][y] = this;
+                //Point is set to the new location of the king here instead
+                Point locationKing = new Point(x, y);
+                ArrayList<ChessPieceBase> pieces = ((TwitchPlaysChess) Main.currentGame).getMovablePieces(tempBoard, !isBlack());
+                ArrayList<Point> points = new ArrayList<>();
+                for (ChessPieceBase piece:pieces){
+                    points.addAll(piece.getValidMoves(tempBoard, false));
+                }
+                if (points.contains(locationKing))
+                    return 0;
+            }
+
+            if (board[x][y] != null && board[x][y].isBlack() != isBlack())
+                return 2;
+            else
+                return 1;
+        }
+        else
+            return 0;
     }
 }

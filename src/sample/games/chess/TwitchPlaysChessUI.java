@@ -69,7 +69,7 @@ public class TwitchPlaysChessUI {
             }
             black = !black;
         }
-        grid.setStyle("-fx-border-color: BROWN; " +
+        grid.setStyle("-fx-border-color: BROWN;" +
                 "-fx-border-width: 8;" +
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
         return grid;
@@ -80,6 +80,9 @@ public class TwitchPlaysChessUI {
         for (ChessPieceBase piece : domein.getMovablePieces(domein.board, domein.isBlackTurn())) {
             if (piece.getValidMoves(domein.board, true).size() > 0)
                 validMoves.add(new Point(piece.getX(), piece.getY()));
+        }
+        if (validMoves.size() == 0){
+            System.out.println(!domein.isBlackTurn() + " :black won");
         }
     }
 
